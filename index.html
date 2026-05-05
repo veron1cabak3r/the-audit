@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Audit — What fashion brands could do better</title>
+  <meta name="description" content="Hypotheses on how fashion brands could do better, built on audited records — and what might already be them trying their hardest.">
+  <meta name="author" content="Veronica Baker">
+  <meta name="theme-color" content="#F1F3F5">
+
+  <meta property="og:title" content="The Audit — Fashion">
+  <meta property="og:description" content="Hypotheses on how fashion brands could do better, built on audited records — and what might already be them trying their hardest.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://veronicarbaker.com/the-audit/">
+  <meta property="og:image" content="https://veronicarbaker.com/the-audit/og-image.png">
+  <meta property="og:site_name" content="The Audit">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Audit — Fashion">
+  <meta name="twitter:description" content="Hypotheses on how fashion brands could do better, built on audited records — and what might already be them trying their hardest.">
+  <meta name="twitter:image" content="https://veronicarbaker.com/the-audit/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F1F3F5;
+      --surface: #FFFFFF;
+      --ink: #1E2528;
+      --muted: #5C666C;
+      --dim: #9CA5AB;
+      --rule: #D5DADE;
+      --rule-soft: #E4E8EB;
+      --accent: #33647A;
+      --accent-soft: #D6E2EB;
+      --status-live: #3D6B4A;
+      --status-live-soft: #DCE8DD;
+      --status-research: #8E5418;
+      --status-research-soft: #F5E6CD;
+      --status-na: #525A60;
+      --status-na-soft: #DEE2E5;
+      --status-disputed: #9A3F32;
+      --status-disputed-soft: #F2D9D2;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+    body {
+      background: var(--surface);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Top nav */
+    .topnav {
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+    .topnav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 1.5rem; gap: 1rem; flex-wrap: wrap;
+    }
+    .brand {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600; font-size: 1.15rem;
+      color: var(--ink); text-decoration: none;
+    }
+    .brand:hover { color: var(--accent); }
+    .brand .dot { color: var(--accent); margin-right: 0.15em; }
+    nav.primary { display: flex; gap: 1.4rem; font-size: 0.9rem; }
+    nav.primary a {
+      color: var(--muted); text-decoration: none; font-weight: 500;
+      padding: 0.25rem 0;
+      border-bottom: 1px solid transparent;
+      transition: color 150ms, border-color 150ms;
+    }
+    nav.primary a:hover { color: var(--ink); }
+    nav.primary a.active {
+      color: var(--ink); border-bottom-color: var(--accent);
+    }
+
+    /* Stats strip (cream) */
+    .stats-strip {
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      padding: 2.5rem 0 2.75rem;
+    }
+    .stats-strip .lede {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(1.625rem, 3.5vw, 2.25rem);
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin: 0 0 1.5rem;
+      max-width: 32em;
+    }
+    .stats { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: baseline; }
+    .stat { display: flex; flex-direction: column; gap: 0.15rem; }
+    .stat .num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500; font-size: 2.4rem; line-height: 1;
+      color: var(--ink); letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat .num.dim { color: var(--dim); }
+    .stat .label {
+      font-size: 0.72rem; letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted); font-weight: 500;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      transition: color 150ms;
+    }
+    .back-link:hover { color: var(--accent); }
+    .back-link::before { content: '←'; font-size: 1rem; }
+
+    /* Main content */
+    main { padding: 0 0 4rem; min-height: 60vh; }
+
+    /* Brand directory (home view) */
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      padding: 2.5rem 0;
+    }
+    .brand-card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      padding: 1.5rem 1.5rem 1.4rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 150ms, transform 150ms, box-shadow 150ms;
+      position: relative;
+    }
+    .brand-card:hover {
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30,37,40,0.08);
+    }
+    .brand-card .name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600; font-size: 1.4rem;
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .brand-card .ticker-row {
+      display: flex; align-items: baseline; gap: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.1rem;
+    }
+    .brand-card .ticker { font-weight: 600; color: var(--ink); }
+    .brand-card .sector { color: var(--muted); }
+    .brand-card .audit-counts {
+      display: flex; gap: 1.1rem;
+      font-variant-numeric: tabular-nums;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .brand-card .audit-counts strong {
+      color: var(--ink);
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+    .brand-card .arrow {
+      position: absolute; bottom: 1.4rem; right: 1.5rem;
+      color: var(--muted); transition: color 150ms, transform 150ms;
+    }
+    .brand-card:hover .arrow { color: var(--accent); transform: translateX(3px); }
+
+    /* Brand page header */
+    .brand-header {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .brand-header .name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.6rem;
+    }
+    .brand-header .meta {
+      display: flex; flex-wrap: wrap; gap: 0.8rem;
+      align-items: center;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .brand-header .meta .ticker {
+      font-weight: 600; color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+    .brand-header .meta .divider { color: var(--rule); }
+    .brand-header .summary {
+      max-width: 36em;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .brand-header .stats {
+      gap: 2rem 3rem;
+      margin-top: 1.5rem;
+    }
+    .brand-header .stat .num { font-size: 1.85rem; }
+
+    /* Audit list (on brand page) */
+    .audit-list {
+      padding: 1.5rem 0 0;
+    }
+    .audit-row {
+      border-bottom: 1px solid var(--rule-soft);
+      cursor: pointer;
+      transition: background-color 100ms;
+    }
+    .audit-row:hover { background: #F5F7F8; }
+    .audit-row.expanded { background: var(--bg); }
+    .audit-row-content {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 1.25rem;
+      padding: 1.4rem 0;
+      align-items: center;
+    }
+    .audit-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      line-height: 1.25;
+      letter-spacing: -0.005em;
+      color: var(--ink);
+    }
+    .audit-summary {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      max-width: 44em;
+    }
+    .audit-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 0.55rem;
+    }
+    .audit-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      padding: 0.15rem 0.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 1rem;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    .audit-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .audit-chevron {
+      color: var(--muted);
+      transition: color 150ms, transform 150ms;
+      font-size: 0.85rem;
+    }
+    .audit-row:hover .audit-chevron, .audit-row.expanded .audit-chevron { color: var(--accent); }
+    .audit-row.expanded .audit-chevron { transform: rotate(90deg); }
+
+    /* Status badges */
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.2rem 0.55rem; border-radius: 1rem;
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .badge::before {
+      content: ''; display: inline-block;
+      width: 6px; height: 6px; border-radius: 50%;
+    }
+    .badge-research { background: var(--status-research-soft); color: var(--status-research); }
+    .badge-research::before { background: var(--status-research); }
+    .badge-live { background: var(--status-live-soft); color: var(--status-live); }
+    .badge-live::before { background: var(--status-live); }
+    .badge-na { background: var(--status-na-soft); color: var(--status-na); }
+    .badge-na::before { background: var(--status-na); }
+    .badge-disputed { background: var(--status-disputed-soft); color: var(--status-disputed); }
+    .badge-disputed::before { background: var(--status-disputed); }
+
+    /* Audit detail (expanded) */
+    .audit-detail {
+      padding: 0 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+    .detail-grid {
+      display: grid;
+      gap: 1.5rem 1.75rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas:
+        "hypothesis hypothesis counterweight"
+        "summary peer counterfactual"
+        "watch status status";
+    }
+    .area-summary { grid-area: summary; }
+    .area-peer { grid-area: peer; }
+    .area-counterfactual { grid-area: counterfactual; }
+    .area-hypothesis { grid-area: hypothesis; }
+    .area-counterweight { grid-area: counterweight; }
+    .area-watch { grid-area: watch; }
+    .area-status { grid-area: status; }
+
+    .detail-block { min-width: 0; }
+    .detail-label {
+      font-size: 0.7rem; letter-spacing: 0.13em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600; margin-bottom: 0.5rem;
+    }
+    .detail-desc {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.55;
+      margin: 0 0 0.5rem;
+    }
+    .detail-desc.muted-desc { color: var(--muted); }
+    .detail-empty {
+      color: var(--muted); font-style: italic;
+    }
+    .detail-empty a {
+      color: var(--accent); font-style: normal;
+    }
+
+    .area-emphasis {
+      background: var(--surface);
+      border-left: 2px solid var(--accent);
+      padding: 1rem 1.1rem;
+      border-radius: 0 4px 4px 0;
+    }
+    .area-emphasis .detail-label { color: var(--accent); }
+    .area-emphasis.area-counterweight { border-left-color: var(--ink); }
+    .area-emphasis.area-counterweight .detail-label { color: var(--ink); }
+
+    .stub-tag {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.18rem 0.55rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--status-research);
+      background: var(--status-research-soft);
+      border-radius: 1rem;
+      font-weight: 600;
+    }
+    .sources {
+      list-style: none; padding: 0; margin: 0;
+      font-size: 0.85rem; line-height: 1.5;
+    }
+    .sources li {
+      padding: 0.3rem 0;
+      border-bottom: 1px dashed var(--rule);
+      color: var(--ink);
+    }
+    .sources li:last-child { border-bottom: none; }
+    .sources li::before { content: '— '; color: var(--muted); }
+
+    .notify-form {
+      display: flex; gap: 0.4rem;
+      margin-top: 0.75rem;
+    }
+    .notify-form input[type=email] {
+      flex: 1; min-width: 0;
+      font: inherit; font-size: 0.85rem;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink); border-radius: 0;
+    }
+    .notify-form input[type=email]:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+    .notify-form button {
+      font: inherit; font-size: 0.8rem; font-weight: 500;
+      padding: 0.5rem 0.85rem;
+      background: var(--ink); color: var(--bg);
+      border: 1px solid var(--ink);
+      cursor: pointer; white-space: nowrap;
+      border-radius: 0;
+    }
+    .notify-form button:hover { opacity: 0.85; }
+    .notify-thanks {
+      font-size: 0.85rem;
+      color: var(--status-live);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--rule);
+      padding: 3rem 0 4rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    footer .footer-brand {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600; font-size: 1.1rem;
+      color: var(--ink); margin-bottom: 0.4rem;
+    }
+    footer p { margin: 0; line-height: 1.5; max-width: 24em; }
+    footer h4 {
+      font-size: 0.7rem; letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--muted); font-weight: 600;
+      margin: 0 0 0.6rem;
+    }
+    footer ul { list-style: none; padding: 0; margin: 0; line-height: 1.9; }
+    footer a {
+      color: var(--ink); text-decoration: none;
+    }
+    footer a:hover { color: var(--accent); }
+    .footer-meta {
+      grid-column: 1 / -1;
+      padding-top: 2rem; margin-top: 2rem;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 0.5rem;
+      font-size: 0.78rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .stats-strip { padding: 1.75rem 0 2rem; }
+      .stats { gap: 1.5rem 2.5rem; }
+      .stat .num { font-size: 1.85rem; }
+      .brand-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .audit-row-content { grid-template-columns: 1fr auto; }
+      .audit-meta { display: none; }
+      .detail-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "hypothesis"
+          "counterweight"
+          "summary"
+          "peer"
+          "counterfactual"
+          "watch"
+          "status";
+        gap: 1.25rem;
+      }
+      footer .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    }
+    @media (max-width: 540px) {
+      .brand-grid { grid-template-columns: 1fr; }
+    }
+
+    a.skip {
+      position: absolute; left: -9999px;
+    }
+    a.skip:focus {
+      left: 1rem; top: 1rem; z-index: 100;
+      padding: 0.5rem 1rem; background: var(--ink); color: var(--bg);
+    }
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    /* Development banner */
+    .dev-banner {
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 0.55rem 1rem;
+    }
+    .dev-banner strong {
+      color: var(--accent-soft);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="dev-banner" role="status">
+    <strong>Draft</strong> In development — shared for feedback only. Nothing here is published.
+  </div>
+
+  <header class="topnav">
+    <div class="container">
+      <a href="#" class="brand" id="brand-link"><span class="dot">●</span> The Audit</a>
+      <nav class="primary" aria-label="Primary">
+        <a href="#" id="nav-home" class="active">Brands</a>
+        <a href="about/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Home view: brand directory -->
+    <div id="home-view">
+      <section class="stats-strip">
+        <div class="container">
+          <h1 class="lede">What fashion brands could do better — and what might already be them trying their hardest.</h1>
+          <div class="stats" role="status">
+            <div class="stat"><span class="num" id="stat-brands">15</span><span class="label">Brands</span></div>
+            <div class="stat"><span class="num" id="stat-audits">0</span><span class="label">Audits</span></div>
+            <div class="stat"><span class="num" id="stat-published">0</span><span class="label">Published</span></div>
+            <div class="stat"><span class="num dim" id="stat-updated">—</span><span class="label">Last update</span></div>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="brand-grid" id="brand-grid"></div>
+      </div>
+    </div>
+
+    <!-- Brand view: shown when route is set -->
+    <div id="brand-view" hidden>
+      <div class="container">
+        <div class="brand-header">
+          <a href="#" class="back-link" id="brand-back">All brands</a>
+          <h1 class="name" id="brand-name"></h1>
+          <div class="meta">
+            <span class="ticker" id="brand-ticker"></span>
+            <span class="divider">·</span>
+            <span id="brand-sector"></span>
+          </div>
+          <p class="summary" id="brand-summary"></p>
+          <div class="stats">
+            <div class="stat"><span class="num" id="brand-audit-count">0</span><span class="label">Audits</span></div>
+            <div class="stat"><span class="num" id="brand-published-count">0</span><span class="label">Published</span></div>
+            <div class="stat"><span class="num dim" id="brand-updated">—</span><span class="label">Last update</span></div>
+          </div>
+        </div>
+        <div class="audit-list" id="audit-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">The Audit</div>
+          <p>Hypotheses on how fashion brands could do better, built on audited records — and what might already be them trying their hardest.</p>
+        </div>
+        <div>
+          <h4>Read</h4>
+          <ul>
+            <li><a href="about/">About / Manifesto</a></li>
+            <li><a href="about/#s4">The eight values</a></li>
+            <li><a href="about/#s7">How rebuttals work</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Reach</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/posts/veron1cabak3r_this-is-how-ai-is-going-to-shift-the-industry-share-7457069919617122304-aI-E">Original post</a></li>
+            <li><a href="/">veronicarbaker.com</a></li>
+          </ul>
+        </div>
+        <div class="footer-meta">
+          <span>The Audit · veronicarbaker.com/the-audit</span>
+          <span>Built in public.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // -------- Status labels --------
+    const STATUS_LABELS = { research: 'In research', live: 'Live', na: 'N/A', disputed: 'Disputed' };
+
+    // -------- Brand & audit data --------
+    // Each audit has: id, title, summary, tags, hypothesisStub, counterweightStub,
+    // counterweightFound (null when in-research, true/false when published), sources,
+    // status, lastUpdated.
+    const BRANDS = [
+      {
+        slug: 'inditex', name: 'Inditex', short: 'Zara', ticker: 'ITX.MC', sector: 'Fast fashion',
+        summary: 'Spanish multinational behind Zara, Pull&Bear, Bershka, Massimo Dutti, and Stradivarius.',
+        audits: [
+          {
+            id: 'living-wage-spain-benchmark', title: 'Closing the wage gap to a living-wage benchmark',
+            summary: 'Inditex commits to fair compensation in supplier countries. We track the gap between current factory wages in core production regions (Bangladesh, Turkey, Morocco, Portugal) and Anker / Global Living Wage Coalition benchmarks.',
+            tags: ['labor', 'wages'],
+            hypothesisStub: 'Where Inditex could move on supplier-country pay — closing the gap to regional living-wage benchmarks where most production happens.',
+            counterweightStub: 'Concrete factors that complicate the move — supplier consolidation timelines, multi-year cost commitments — or evidence Inditex is already at the structural ceiling.',
+            counterweightFound: null,
+            sources: ['Inditex annual sustainability reports', 'Worker Rights Consortium', 'Anker Living Wage benchmarks', 'Open Supply Hub factory list'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'speed-vs-supply-chain', title: 'Microfactory automation and supply-chain workers',
+            summary: 'Inditex has invested in near-shore microfactories that promise faster turnaround. We track whether automation has reduced supply-chain employment, increased it, or shifted it geographically.',
+            tags: ['automation', 'labor'],
+            hypothesisStub: 'How Inditex could pair near-shoring with retraining or redeployment commitments rather than net employment loss.',
+            counterweightStub: 'Programs Inditex may have committed to that offset employment effects, or evidence the shift is purely additive.',
+            counterweightFound: null,
+            sources: ['Inditex annual reports', 'Industry analyst coverage', 'Spanish Ministry of Labor data', 'Worker Rights Consortium'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'hm', name: 'H&M Group', ticker: 'HM-B.ST', sector: 'Fast fashion',
+        summary: 'Swedish multinational. Brands include H&M, COS, &Other Stories, Arket, Weekday, Monki.',
+        audits: [
+          {
+            id: 'conscious-collection-traceability', title: 'The Conscious Collection traceability question',
+            summary: 'H&M has marketed "Conscious" lines for over a decade. A 2022 NYC class-action alleged the labels overstate sustainability. We track the verifiable share of materials in current Conscious products.',
+            tags: ['materials', 'greenwashing', 'litigation'],
+            hypothesisStub: 'Where H&M could improve material-claim verifiability — by linking each product to a traceable supplier chain disclosure.',
+            counterweightStub: 'Programs H&M has rolled out post-2022 to improve traceability, or constraints from their supplier mix.',
+            counterweightFound: null,
+            sources: ['H&M annual sustainability reports', 'NYC class-action filings (Commodity Futures Trading Commission docket)', 'CDP disclosures', 'Higg MSI ratings'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'take-back-recycling-rates', title: 'The Take Back program — what actually happens',
+            summary: 'H&M\'s Take Back program collects used garments in stores. We track what share is actually recycled into new garments versus sold downstream, exported, or landfilled.',
+            tags: ['circular', 'materials'],
+            hypothesisStub: 'Where H&M could increase the share of collected garments that re-enter their own production chain.',
+            counterweightStub: 'Technical limits on textile-to-textile recycling, or the cost structure of doing so at scale.',
+            counterweightFound: null,
+            sources: ['H&M Take Back impact reports', 'Independent investigative journalism (Aftonbladet, Changing Markets)', 'EU textile recycling data'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'nike', name: 'Nike', ticker: 'NKE', sector: 'Athletic',
+        summary: 'Largest athletic brand globally. Subsidiaries include Jordan and Converse.',
+        audits: [
+          {
+            id: 'tariff-pass-through-2018-2020', title: 'The tariff pass-through, 2018–2020',
+            summary: 'During the 2018–2020 Section 301 tariff escalation, Nike raised retail prices on China-made goods citing tariff costs. We track whether Nike\'s consumer prices adjusted when tariff exclusions were granted or rates were modified.',
+            tags: ['pricing', 'tariffs', 'consumer'],
+            hypothesisStub: 'Where Nike could retroactively pass through tariff savings to consumers — and what their margin trajectory shows during and after the tariff window.',
+            counterweightStub: 'Documented offsetting cost increases (shipping, materials) that absorbed the tariff savings. Or evidence the price hike covered structural input costs unrelated to tariffs.',
+            counterweightFound: null,
+            sources: ['SEC 10-K and 10-Q filings 2018–2024', 'USTR Section 301 exclusion grants', 'Wayback Machine retail-price archives', 'Cotton Outlook & shipping rate indices'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'move-to-zero-progress', title: '"Move to Zero" — Scope 3 trajectory',
+            summary: 'Nike\'s "Move to Zero" pledge committed to 65% renewable energy and 30% emissions reduction by 2030. We track verified progress against the pledged trajectory.',
+            tags: ['climate', 'pledges'],
+            hypothesisStub: 'Where Nike could accelerate Scope 3 reductions — supplier engagement, material substitution, product longevity.',
+            counterweightStub: 'Capex cycles for facility upgrades, supplier transition timelines, or material-cost realities.',
+            counterweightFound: null,
+            sources: ['Nike Impact Report annual', 'CDP climate disclosures', 'SBTi target validation', 'Verified Scope 3 emissions data'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: '2020-racial-justice-followthrough', title: '2020 racial-justice commitments — four-year follow-through',
+            summary: 'In 2020, Nike committed $40M over four years to Black community organizations and pledged increased Black executive representation. We track follow-through against published targets.',
+            tags: ['DEI', 'commitments'],
+            hypothesisStub: 'Where Nike could close the gap between 2020 pledges and 2024 measurable outcomes.',
+            counterweightStub: 'Structural commitments already in motion (board representation timelines, vendor program ramp), or shifts in measurement that complicate the comparison.',
+            counterweightFound: null,
+            sources: ['Nike Impact Report 2020-2024', 'Nike proxy statements', 'NAACP Legal Defense Fund corporate scorecards'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'lululemon', name: 'Lululemon', ticker: 'LULU', sector: 'Athleisure',
+        summary: 'Premium athleisure brand. Known for yoga apparel, Mirror acquisition (2020) and divestiture (2023).',
+        audits: [
+          {
+            id: 'tariff-refund-pocket', title: 'The tariff refund pocket',
+            summary: 'Lululemon raised retail prices during the 2018–2020 Section 301 tariff window, citing tariff costs in earnings calls. Some Section 301 tariffs were later modified or excluded; some duty refunds were issued. We track whether Lululemon\'s consumer prices reflected the savings — or whether the 2018–2020 price hikes became permanent margin.',
+            tags: ['pricing', 'tariffs', 'consumer'],
+            hypothesisStub: 'Where Lululemon could pass through documented tariff savings to consumers — or where the 2018–2020 hikes have become structural margin uncoupled from input costs.',
+            counterweightStub: 'Concurrent input cost increases (shipping, materials, wage inflation in Vietnam and Cambodia) that may have absorbed the tariff savings. Or evidence the price hike was always priced for the longer term.',
+            counterweightFound: null,
+            sources: ['Lululemon SEC 10-K and 10-Q filings 2018-2024', 'Earnings call transcripts (mentions of "tariff" and "input cost")', 'USTR Section 301 exclusion grants', 'Wayback Machine retail-price archives for Lululemon.com', 'Cotton, polyester & shipping rate indices'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'quality-decline-post-2014', title: 'The quality decline narrative',
+            summary: 'After the 2013 see-through-pants recall, Lululemon swapped Luon fabric. Customer reviews and durability tests since suggest continued quality concerns while retail prices have risen. We track the verifiable trajectory.',
+            tags: ['quality', 'durability', 'pricing'],
+            hypothesisStub: 'Where Lululemon could rebuild quality at current price points, or be transparent about cost-driven specification changes.',
+            counterweightStub: 'Genuine production-cost shifts that changed what\'s achievable at a given price point.',
+            counterweightFound: null,
+            sources: ['Lululemon SEC filings', 'Independent durability tests (Wirecutter, Outdoor Gear Lab)', 'Customer reviews aggregated by year', 'Material spec changes documented in product disclosures'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'mirror-writedown-vs-layoffs', title: 'Mirror write-down and workforce decisions',
+            summary: 'Lululemon acquired Mirror for $500M in 2020 and discontinued the product line in 2023, taking write-downs. We track how the financial loss was distributed — between executive compensation, layoffs, and shareholder returns.',
+            tags: ['capital', 'layoffs', 'governance'],
+            hypothesisStub: 'Where Lululemon could have absorbed the Mirror loss differently — preserving more roles, scaling exec comp more conservatively.',
+            counterweightStub: 'Genuine constraints from debt covenants, lease obligations, or commitments that limited flexibility.',
+            counterweightFound: null,
+            sources: ['Lululemon SEC 8-K filings 2023', 'Proxy statements 2020-2024', 'Layoff WARN notices', 'Earnings call transcripts'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'adidas', name: 'Adidas', ticker: 'ADS.DE', sector: 'Athletic',
+        summary: 'German multinational. Subsidiaries include Reebok (divested 2021).',
+        audits: [
+          {
+            id: 'yeezy-unwind-economics', title: 'The Yeezy unwind — costs, donations, distribution',
+            summary: 'Adidas terminated the Yeezy partnership in October 2022 after Kanye West\'s antisemitic statements, sitting on ~$1.3B in inventory. We track how the inventory was unwound — what was donated, where, and what financial choices were made.',
+            tags: ['inventory', 'governance', 'donations'],
+            hypothesisStub: 'Where Adidas could have distributed the Yeezy unwind more transparently — published donation recipients, geographic distribution, methodology for "anti-discrimination organization" allocations.',
+            counterweightStub: 'Legal constraints around Yeezy IP, contractual obligations to retailers, or genuine logistical challenges of inventory at this scale.',
+            counterweightFound: null,
+            sources: ['Adidas SEC filings and German market disclosures', 'Adidas 2023 annual report (Yeezy disclosures)', 'Investigative journalism (NYT, Reuters)', 'NGO recipient disclosures'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'made-with-nature-claims', title: '"Made With Nature" line — material claims vs. third-party verification',
+            summary: 'Adidas has marketed multiple lines as nature-inspired or biodegradable. We track which claims are independently verified versus marketing assertions.',
+            tags: ['materials', 'greenwashing'],
+            hypothesisStub: 'Where Adidas could move toward third-party-verified material claims at the SKU level.',
+            counterweightStub: 'Industry-wide standards limitations, or supply-chain visibility constraints from current sourcing.',
+            counterweightFound: null,
+            sources: ['Adidas Impact Report annual', 'Higg MSI ratings', 'Independent material certification bodies (Bluesign, GRS)', 'EU Green Claims Directive references'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'vfcorp', name: 'VF Corporation', ticker: 'VFC', sector: 'Apparel conglomerate',
+        summary: 'Parent of The North Face, Vans, Timberland, Dickies, Smartwool, JanSport.',
+        audits: [
+          {
+            id: 'pfas-claims-testing', title: 'PFAS in outdoor and lifestyle products',
+            summary: 'VF brands (North Face, Vans, Timberland, Dickies) have made variable PFAS phase-out commitments. We track third-party PFAS testing on current SKUs versus stated claims.',
+            tags: ['materials', 'health', 'testing'],
+            hypothesisStub: 'Where VF could close the gap between brand-specific PFAS pledges and third-party-tested SKU reality.',
+            counterweightStub: 'Concrete supplier transition timelines, regulatory variations across jurisdictions, or technical constraints in alternative chemistries.',
+            counterweightFound: null,
+            sources: ['VF Corp Made for Change report', 'Independent PFAS testing (Mamavation, Toxic-Free Future)', 'EU REACH disclosures', 'California AB 2771 disclosures'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'capital-allocation-2023-layoffs', title: 'Capital allocation through the 2023 reset',
+            summary: 'VF announced a major restructuring in 2023 with layoffs and dividend cuts. We track how the financial reset was distributed across executive compensation, layoffs, dividends, and operational investment.',
+            tags: ['capital', 'layoffs', 'governance'],
+            hypothesisStub: 'Where VF could have shaped the reset differently — preserving more roles, scaling exec comp to match the moment.',
+            counterweightStub: 'Debt-service requirements, dividend obligations to long-term shareholders, or transformation costs.',
+            counterweightFound: null,
+            sources: ['VF Corp SEC 10-K and 8-K filings 2023', 'Proxy statements 2023-2024', 'WARN Act notices', 'Earnings call transcripts'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'levi', name: 'Levi Strauss', ticker: 'LEVI', sector: 'Heritage / denim',
+        summary: 'American heritage denim brand. Subsidiaries include Dockers and Beyond Yoga.',
+        audits: [
+          {
+            id: 'water-less-savings', title: 'The Water<Less savings claim',
+            summary: 'Levi\'s Water<Less program claims to have saved billions of liters of water in finishing. We track the verifiable share of products using Water<Less techniques and the third-party verification of savings claims.',
+            tags: ['water', 'materials', 'verification'],
+            hypothesisStub: 'Where Levi\'s could move toward SKU-level water-savings disclosure and third-party-verified production data.',
+            counterweightStub: 'Manufacturing-process variability, supplier-disclosure limits, or cost differences across factories.',
+            counterweightFound: null,
+            sources: ['Levi Strauss sustainability reports', 'CDP water disclosures', 'Higg FEM scores', 'Independent verification bodies'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'cotton-sourcing-traceability', title: 'Cotton sourcing — Better Cotton vs. organic vs. recycled',
+            summary: 'Levi\'s sources cotton through multiple programs (Better Cotton, organic, recycled). We track the verifiable share of each, the chain-of-custody documentation, and the alignment with public claims.',
+            tags: ['materials', 'sourcing', 'traceability'],
+            hypothesisStub: 'Where Levi\'s could improve chain-of-custody transparency — making each product\'s cotton source verifiable.',
+            counterweightStub: 'Better Cotton mass-balance limits, supplier-level mixing in spinning, or industry-wide chain-of-custody constraints.',
+            counterweightFound: null,
+            sources: ['Levi Strauss sustainability reports', 'Better Cotton Initiative reports', 'GOTS / GRS certification data', 'Independent investigations'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'ralphlauren', name: 'Ralph Lauren', ticker: 'RL', sector: 'Heritage / lifestyle',
+        summary: 'American heritage brand. Polo Ralph Lauren, Lauren Ralph Lauren, Ralph Lauren Purple Label.',
+        audits: [
+          {
+            id: 'color-light-denim-claims', title: 'The Color & Light denim sustainability story',
+            summary: 'Ralph Lauren launched a "Color on Demand" dyeing technology with sustainability claims. We track verifiable adoption rates, water/chemistry savings, and SKU-level disclosure.',
+            tags: ['materials', 'innovation', 'verification'],
+            hypothesisStub: 'Where Ralph Lauren could expand Color on Demand adoption and publish SKU-level production data.',
+            counterweightStub: 'Genuine technology scaling timelines, supplier capability constraints, or cost-per-garment economics.',
+            counterweightFound: null,
+            sources: ['Ralph Lauren Citizenship & Sustainability Report', 'CDP water disclosures', 'Independent material verification', 'Apparel industry analyst coverage'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: '2020-racial-justice-followthrough', title: '2020 racial-justice pledges — follow-through',
+            summary: 'In 2020, Ralph Lauren pledged $5M to NAACP and announced workforce diversification commitments. We track measurable follow-through.',
+            tags: ['DEI', 'commitments'],
+            hypothesisStub: 'Where Ralph Lauren could close the 2020-pledge to 2024-outcome gap.',
+            counterweightStub: 'Structural commitments already in motion, or shifts in measurement methodology.',
+            counterweightFound: null,
+            sources: ['Ralph Lauren Citizenship Report 2020-2024', 'Ralph Lauren proxy statements', 'NAACP corporate engagement records'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'gap', name: 'Gap Inc.', ticker: 'GAP', sector: 'Multi-brand mid-tier',
+        summary: 'Parent of Gap, Old Navy, Banana Republic, Athleta.',
+        audits: [
+          {
+            id: 'bangladesh-accord-history', title: 'The Bangladesh Safety Accord — fifteen-year participation history',
+            summary: 'Gap Inc. famously declined to sign the original 2013 Accord on Fire and Building Safety in Bangladesh after Rana Plaza. We track Gap\'s alternative safety program (Alliance for Bangladesh Worker Safety) and current factory-safety commitments.',
+            tags: ['labor', 'safety', 'legacy'],
+            hypothesisStub: 'Where Gap could match current best-in-class supplier safety standards (signing the International Accord, factory-level disclosures).',
+            counterweightStub: 'Alternative safety programs already in place, or supplier-base differences that complicate direct comparison.',
+            counterweightFound: null,
+            sources: ['International Accord member list', 'Gap Inc. Inclusion & Sustainability Report', 'Worker Rights Consortium Bangladesh reports', 'Alliance for Bangladesh Worker Safety records'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'athleta-living-wage', title: 'Athleta living-wage commitments',
+            summary: 'Athleta is Gap\'s sustainability-positioned brand. We track its supplier living-wage progress, certifications (Fair Trade, B Corp), and gap to regional benchmarks.',
+            tags: ['labor', 'wages', 'certifications'],
+            hypothesisStub: 'Where Athleta could close the gap between its B Corp positioning and supplier living-wage reality.',
+            counterweightStub: 'Shared-supplier dynamics with non-Athleta Gap brands, or industry-wide wage benchmark constraints.',
+            counterweightFound: null,
+            sources: ['Athleta sustainability reporting', 'B Corp recertification disclosures', 'Fair Trade USA factory data', 'Anker Living Wage benchmarks'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'tjx', name: 'TJX Companies', ticker: 'TJX', sector: 'Off-price',
+        summary: 'Parent of TJ Maxx, Marshalls, HomeGoods, Sierra, HomeSense.',
+        audits: [
+          {
+            id: 'off-price-supply-chain', title: 'Off-price supply-chain visibility',
+            summary: 'TJX sources from over 21,000 vendors across 100+ countries. We track the share of suppliers with public factory-level disclosure versus those undisclosed.',
+            tags: ['supply-chain', 'disclosure'],
+            hypothesisStub: 'Where TJX could improve supplier visibility despite the off-price model\'s sourcing flexibility.',
+            counterweightStub: 'Genuine challenges of an opportunistic sourcing model, or commercial-confidentiality constraints unique to off-price.',
+            counterweightFound: null,
+            sources: ['TJX Corporate Responsibility Report', 'Open Supply Hub disclosures', 'Worker Rights Consortium reports', 'Investigative journalism'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'excess-inventory-claims', title: 'Excess-inventory and "diverted from landfill" claims',
+            summary: 'Off-price retailers like TJX are sometimes positioned as a sustainability solution by absorbing other brands\' excess inventory. We track the verifiable share of TJX\'s sourcing that is genuine excess versus produced-for-off-price.',
+            tags: ['materials', 'inventory', 'greenwashing'],
+            hypothesisStub: 'Where TJX could disclose the share of its sourcing that is genuine deadstock versus made-for-off-price.',
+            counterweightStub: 'Vendor-confidentiality constraints, or the genuine ambiguity in "excess inventory" definitions.',
+            counterweightFound: null,
+            sources: ['TJX vendor disclosures', 'Industry analyst reports', 'EU SCIP database disclosures', 'Apparel industry investigations'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'tapestry', name: 'Tapestry', ticker: 'TPR', sector: 'Accessible luxury',
+        summary: 'Parent of Coach, Kate Spade, Stuart Weitzman.',
+        audits: [
+          {
+            id: 'coachtopia-traceability', title: 'Coachtopia recycled-leather traceability',
+            summary: 'Coachtopia is Coach\'s circular sub-line, claiming recycled and bio-based leathers. We track product-level traceability and third-party verification of material claims.',
+            tags: ['materials', 'circular', 'verification'],
+            hypothesisStub: 'Where Coachtopia could move toward batch-level material traceability and third-party verification.',
+            counterweightStub: 'Bio-leather technology stage, supplier capability ramp, or cost economics at current scale.',
+            counterweightFound: null,
+            sources: ['Tapestry sustainability reports', 'Coachtopia product-level disclosures', 'Independent material certification', 'Industry analyst coverage'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'capri-merger-transparency', title: 'The Capri merger — transparency through the FTC challenge',
+            summary: 'Tapestry\'s 2023 attempted acquisition of Capri Holdings was blocked by FTC in 2024. We track public disclosures during the merger window — labor commitments, brand independence, supply-chain consolidation plans.',
+            tags: ['governance', 'M&A', 'antitrust'],
+            hypothesisStub: 'Where Tapestry could disclose more about its post-deal plans and labor implications.',
+            counterweightStub: 'Genuine antitrust-litigation constraints, or commercial-strategy confidentiality.',
+            counterweightFound: null,
+            sources: ['FTC v. Tapestry filings', 'SEC merger proxy materials', 'Investigative journalism (Reuters, FT)', 'Tapestry & Capri public statements'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'capri', name: 'Capri Holdings', ticker: 'CPRI', sector: 'Accessible luxury',
+        summary: 'Parent of Michael Kors, Versace, Jimmy Choo.',
+        audits: [
+          {
+            id: 'versace-sustainability-history', title: 'Versace sustainability commitments — claim vs. track record',
+            summary: 'Versace under Capri has made multiple sustainability commitments. We track the verifiable share of progress against pledged trajectories.',
+            tags: ['climate', 'pledges'],
+            hypothesisStub: 'Where Versace could close the pledge-to-progress gap with measurable supplier engagement.',
+            counterweightStub: 'Luxury supplier consolidation timelines, material-cost realities, or capex cycles.',
+            counterweightFound: null,
+            sources: ['Capri Holdings sustainability reports', 'CDP disclosures', 'Versace public commitments', 'Industry analyst coverage'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'michael-kors-store-closures', title: 'Michael Kors store closures and workforce decisions',
+            summary: 'Michael Kors has closed stores across multiple cycles. We track the workforce impact, severance terms, and concurrent capital decisions.',
+            tags: ['layoffs', 'capital', 'retail'],
+            hypothesisStub: 'Where Capri could shape store closures with stronger transition support for affected workers.',
+            counterweightStub: 'Lease-obligation realities, retail-market shifts, or transformation-cost constraints.',
+            counterweightFound: null,
+            sources: ['Capri SEC filings', 'WARN Act notices', 'Proxy statements', 'Industry analyst reports'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'pvh', name: 'PVH Corp.', ticker: 'PVH', sector: 'Heritage / lifestyle',
+        summary: 'Parent of Calvin Klein, Tommy Hilfiger.',
+        audits: [
+          {
+            id: 'tommy-circular-traceability', title: 'Tommy Hilfiger Circular Collection traceability',
+            summary: 'Tommy\'s Circular Collection has committed to recycled and recyclable materials. We track product-level traceability and the share of collected garments that re-enter Tommy\'s production.',
+            tags: ['materials', 'circular'],
+            hypothesisStub: 'Where Tommy could move toward batch-level traceability and verified circular-loop returns.',
+            counterweightStub: 'Textile-recycling technology limits, or supplier-capability constraints.',
+            counterweightFound: null,
+            sources: ['PVH sustainability reports', 'Tommy Hilfiger Circular Collection product disclosures', 'Independent material certification', 'Industry analyst coverage'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'russia-exit-disclosures', title: 'The Russia exit — costs and reporting',
+            summary: 'PVH announced a Russia exit in 2022. We track the financial structure of the exit — write-downs, sublicensing, residual operations, and disclosure cadence.',
+            tags: ['governance', 'geopolitics', 'disclosure'],
+            hypothesisStub: 'Where PVH could disclose more about residual Russia-linked operations or revenue.',
+            counterweightStub: 'Genuine commercial-confidentiality constraints, or sanctions-compliance complexity.',
+            counterweightFound: null,
+            sources: ['PVH SEC 10-K and 8-K filings 2022-2024', 'Yale CELI Russia exits database', 'Investigative journalism (B4Ukraine)', 'Earnings call transcripts'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'americaneagle', name: 'American Eagle', ticker: 'AEO', sector: 'Mid-tier mall',
+        summary: 'Parent of American Eagle Outfitters and Aerie.',
+        audits: [
+          {
+            id: 'aerie-real-ad-spend', title: 'Aerie #AerieREAL — ad spend vs. brand presence',
+            summary: 'Aerie\'s #AerieREAL campaign has been a body-positivity marketing centerpiece since 2014. We track the share of Aerie\'s ad spend that aligns with the campaign\'s representation claims versus traditional fashion-marketing imagery.',
+            tags: ['marketing', 'inclusivity', 'representation'],
+            hypothesisStub: 'Where Aerie could align ad spend with stated representation principles across all marketing channels.',
+            counterweightStub: 'Channel-specific marketing requirements, or genuine evolution in what "real" representation means over time.',
+            counterweightFound: null,
+            sources: ['American Eagle SEC filings', 'Aerie marketing campaigns over time', 'Industry analyst coverage', 'Independent brand-monitoring research'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'tariff-pass-through', title: 'The 2018–2020 tariff pass-through',
+            summary: 'American Eagle raised retail prices during the 2018–2020 tariff window. We track whether prices adjusted when tariffs were modified or refunded.',
+            tags: ['pricing', 'tariffs'],
+            hypothesisStub: 'Where AEO could pass through documented tariff savings to consumers.',
+            counterweightStub: 'Concurrent input-cost increases that absorbed the tariff savings, or strategic re-pricing for the longer term.',
+            counterweightFound: null,
+            sources: ['AEO SEC 10-K and 10-Q filings 2018-2024', 'Earnings call transcripts', 'USTR Section 301 records', 'Wayback Machine retail-price archives'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+      {
+        slug: 'urbn', name: 'Urban Outfitters Inc.', ticker: 'URBN', sector: 'Multi-brand premium',
+        summary: 'Parent of Urban Outfitters, Anthropologie, Free People, Nuuly.',
+        audits: [
+          {
+            id: 'anthropologie-pricing-markup', title: 'Anthropologie pricing — markup vs. peers',
+            summary: 'Anthropologie is positioned as a premium brand within URBN. We track gross margin and price-to-cost ratios versus peer brands at similar quality positioning.',
+            tags: ['pricing', 'margin', 'positioning'],
+            hypothesisStub: 'Where Anthropologie\'s pricing could be reconciled with its quality and sourcing positioning.',
+            counterweightStub: 'Genuine sourcing differences (private-label, hand-finished items, designer collaborations) that justify the markup.',
+            counterweightFound: null,
+            sources: ['URBN SEC 10-K filings', 'Industry analyst coverage', 'Wayback Machine retail-price archives', 'Independent quality testing'],
+            status: 'research', lastUpdated: null,
+          },
+          {
+            id: 'free-people-supply-chain', title: 'Free People supply chain — premium pricing vs. visibility',
+            summary: 'Free People is URBN\'s premium-priced bohemian brand. We track supply-chain visibility relative to the brand\'s positioning and pricing.',
+            tags: ['supply-chain', 'pricing', 'transparency'],
+            hypothesisStub: 'Where Free People could move toward supplier-level disclosure consistent with its premium positioning.',
+            counterweightStub: 'Shared sourcing with other URBN brands, or commercial-confidentiality dynamics.',
+            counterweightFound: null,
+            sources: ['URBN SEC filings', 'Open Supply Hub disclosures', 'Worker Rights Consortium reports', 'Investigative journalism'],
+            status: 'research', lastUpdated: null,
+          },
+        ],
+      },
+    ];
+
+    // -------- Computed totals --------
+    function totalAudits() { return BRANDS.reduce((s, b) => s + b.audits.length, 0); }
+    function totalLive() { return BRANDS.reduce((s, b) => s + b.audits.filter(a => a.status === 'live').length, 0); }
+
+    // -------- Routing --------
+    function getRoute() {
+      const hash = window.location.hash.replace(/^#\/?/, '');
+      if (!hash) return { view: 'home' };
+      const parts = hash.split('/').filter(Boolean);
+      if (parts.length >= 1) {
+        const brand = BRANDS.find(b => b.slug === parts[0]);
+        if (brand) {
+          return { view: 'brand', brand, auditId: parts[1] || null };
+        }
+      }
+      return { view: 'home' };
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    // -------- Render: home --------
+    function renderHome() {
+      document.getElementById('home-view').hidden = false;
+      document.getElementById('brand-view').hidden = true;
+      document.title = 'The Audit — What fashion brands could do better';
+      document.getElementById('nav-home').classList.add('active');
+
+      document.getElementById('stat-brands').textContent = BRANDS.length;
+      document.getElementById('stat-audits').textContent = totalAudits();
+      document.getElementById('stat-published').textContent = totalLive();
+
+      const grid = document.getElementById('brand-grid');
+      grid.innerHTML = BRANDS.map(b => `
+        <a class="brand-card" href="#/${escapeHtml(b.slug)}">
+          <div class="name">${escapeHtml(b.name)}</div>
+          <div class="ticker-row">
+            <span class="ticker">${escapeHtml(b.ticker)}</span>
+            <span class="sector">${escapeHtml(b.sector)}</span>
+          </div>
+          <div class="audit-counts">
+            <span><strong>${b.audits.length}</strong> audits</span>
+            <span><strong>${b.audits.filter(a => a.status === 'live').length}</strong> published</span>
+          </div>
+          <span class="arrow">→</span>
+        </a>
+      `).join('');
+
+      window.scrollTo({ top: 0 });
+    }
+
+    // -------- Render: brand --------
+    function renderBrand(brand, auditId) {
+      document.getElementById('home-view').hidden = true;
+      document.getElementById('brand-view').hidden = false;
+      document.title = `${brand.name} — The Audit`;
+      document.getElementById('nav-home').classList.remove('active');
+
+      document.getElementById('brand-name').textContent = brand.name;
+      document.getElementById('brand-ticker').textContent = brand.ticker;
+      document.getElementById('brand-sector').textContent = brand.sector;
+      document.getElementById('brand-summary').textContent = brand.summary;
+      document.getElementById('brand-audit-count').textContent = brand.audits.length;
+      document.getElementById('brand-published-count').textContent = brand.audits.filter(a => a.status === 'live').length;
+
+      const list = document.getElementById('audit-list');
+      list.innerHTML = brand.audits.map(a => renderAuditRow(a, brand.slug, auditId === a.id)).join('');
+
+      if (auditId) {
+        const target = document.getElementById('audit-' + auditId);
+        if (target) {
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        } else {
+          window.scrollTo({ top: 0 });
+        }
+      } else {
+        window.scrollTo({ top: 0 });
+      }
+    }
+
+    function renderAuditRow(a, brandSlug, isExpanded) {
+      const tagHtml = (a.tags || []).map(t => `<span class="audit-tag">${escapeHtml(t)}</span>`).join('');
+      let counterweightContent;
+      if (a.counterweightFound === false) {
+        counterweightContent = `<p class="detail-desc detail-empty">No counterweight identified at time of publication. If you know of a documented program or commitment that constrains this hypothesis, <a href="mailto:hello@veronicarbaker.com?subject=Counterweight%20for%20${escapeHtml(a.id)}">tell us</a>.</p>`;
+      } else {
+        counterweightContent = `<p class="detail-desc">${escapeHtml(a.counterweightStub)}</p><span class="stub-tag">In research</span>`;
+      }
+
+      return `
+        <div class="audit-row${isExpanded ? ' expanded' : ''}" id="audit-${escapeHtml(a.id)}" data-id="${escapeHtml(a.id)}">
+          <div class="audit-row-content">
+            <div>
+              <div class="audit-title">${escapeHtml(a.title)}</div>
+              <div class="audit-summary">${escapeHtml(a.summary)}</div>
+              ${tagHtml ? `<div class="audit-tags">${tagHtml}</div>` : ''}
+            </div>
+            <div class="audit-meta">
+              <span class="badge badge-${a.status}">${STATUS_LABELS[a.status]}</span>
+            </div>
+            <span class="audit-chevron">▸</span>
+          </div>
+          ${isExpanded ? `
+          <div class="audit-detail">
+            <div class="detail-grid">
+              <div class="detail-block area-hypothesis area-emphasis">
+                <div class="detail-label">Hypothesis — what they could do better</div>
+                <p class="detail-desc">${escapeHtml(a.hypothesisStub)}</p>
+                <span class="stub-tag">In research</span>
+              </div>
+              <div class="detail-block area-counterweight area-emphasis">
+                <div class="detail-label">Counterweight — or their best effort already</div>
+                ${counterweightContent}
+              </div>
+              <div class="detail-block area-summary">
+                <div class="detail-label">Summary</div>
+                <p class="detail-desc muted-desc">${escapeHtml(a.summary)}</p>
+              </div>
+              <div class="detail-block area-peer">
+                <div class="detail-label">Peer comparison</div>
+                <p class="detail-desc muted-desc">How peers in similar positions handled the same situation. Not commentary — more receipts.</p>
+                <span class="stub-tag">In research</span>
+              </div>
+              <div class="detail-block area-counterfactual">
+                <div class="detail-label">Counterfactual</div>
+                <p class="detail-desc muted-desc">The math of an alternative past choice, with assumptions shown.</p>
+                <span class="stub-tag">In research</span>
+              </div>
+              <div class="detail-block area-watch">
+                <div class="detail-label">Watching for</div>
+                <ul class="sources">${a.sources.map(s => `<li>${escapeHtml(s)}</li>`).join('')}</ul>
+              </div>
+              <div class="detail-block area-status">
+                <div class="detail-label">Status</div>
+                <p>This audit is in research. Hypothesis and counterweight will be quantified once primary documents are corroborated.</p>
+                <p class="detail-empty" style="margin-top:0.5rem;">Email signup will be wired in before launch.</p>
+              </div>
+            </div>
+          </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // -------- Init --------
+    function render() {
+      const route = getRoute();
+      if (route.view === 'home') {
+        renderHome();
+      } else if (route.view === 'brand') {
+        renderBrand(route.brand, route.auditId);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      render();
+
+      window.addEventListener('hashchange', render);
+
+      // Audit row toggle (event delegation on document so it survives re-renders)
+      document.addEventListener('click', e => {
+        const row = e.target.closest('.audit-row');
+        const form = e.target.closest('form');
+        const link = e.target.closest('a');
+        if (form || link) return; // let forms and links work normally
+        if (!row) return;
+        const route = getRoute();
+        if (route.view !== 'brand') return;
+        const id = row.dataset.id;
+        const isExpanded = row.classList.contains('expanded');
+        if (isExpanded) {
+          window.location.hash = `#/${route.brand.slug}`;
+        } else {
+          window.location.hash = `#/${route.brand.slug}/${id}`;
+        }
+      });
+
+      // Notify form (placeholder)
+      document.addEventListener('submit', e => {
+        const form = e.target.closest('form.notify-form');
+        if (!form) return;
+        e.preventDefault();
+        // TODO: wire to a real form endpoint (Buttondown, ConvertKit, Formspree)
+        const email = form.querySelector('input[type=email]').value;
+        const wrap = form.parentElement;
+        form.remove();
+        const thanks = document.createElement('div');
+        thanks.className = 'notify-thanks';
+        thanks.textContent = "Thanks. We'll email " + email + " when this audit goes live.";
+        wrap.appendChild(thanks);
+      });
+    });
+  </script>
+</body>
+</html>
